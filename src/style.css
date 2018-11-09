@@ -1,0 +1,53 @@
+body {
+	min-width: 150px;
+	text-align: left;
+	padding: 5px;
+	background-image: url('chrome-extension://__MSG_@@extension_id__/bg.jpg');
+	background-position-x: center;
+	background-position-y: top;
+	background-size: initial;
+}
+
+h1 {
+	color: white;
+	font-size: 1em;
+}
+
+span {
+	text-align: center;
+	color: white;
+	font-size: 1em;
+}
+
+#updateStatus {
+	display: block;
+	margin: 0 auto;
+	width: 90%;
+}
+
+#selectStatus {
+	margin-top: 4px;
+	padding: 2px;
+	border-color: white;
+	border-radius: 4px;
+	background-color: rgb(64, 123, 179);
+	color: white;
+	width: 80%;
+}
+
+.select-selected {
+  background-color: rgb(64, 123, 179);
+}
+
+a {
+	color: white;
+}
+
+#span_logo {
+	width: 100%;
+	text-align: center;
+}
+
+#divUser {
+	text-align: center;
+}

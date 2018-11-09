@@ -1,0 +1,43 @@
+{
+	"manifest_version": 2,
+	"name": "Cisco Finesse Helper",
+	"description": "Extension designed for aiding the use of Finesse.",
+	"version": "1.0",
+	"icons": { "48": "icon48.png"
+	},
+	
+	"browser_action": {
+		"default_icon": "icon.png",
+		"default_title": "Cisco Finesse Helper",
+		"default_popup": "finessehelper.html"
+	},
+	
+	"background": {
+		"scripts": [
+			"jquery-3.3.1.js", 
+			"eventPage.js", 
+			"moment.js"
+		],
+		"persistent": false
+	},
+	
+	"content_scripts": [
+		{
+			"matches": ["https://usgsovoice009.srv.volvo.com/desktop/container/*"],
+			"js": [
+				"jquery-3.3.1.js", 
+				"finessehelper_cs.js", 
+				"moment.js"
+			]
+		}
+	],
+	
+	"permissions": [
+		"tabs",
+		"storage",
+		"https://usgsovoice009.srv.volvo.com/desktop/container/*"
+	],
+	
+	"web_accessible_resources": ["bg.jpg"]
+	
+}

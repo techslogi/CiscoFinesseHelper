@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Cisco Finesse Helper</title>
+		<script src="jquery-3.3.1.js"></script>
+		<script src="finessehelper.js"></script>
+		<script src="moment.js"></script>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
+	</head>
+	<body>
+		<div id="span_logo">
+			<img alt="cisco_logo" src="cisco_logo.png"></img>
+		</div>
+		<div id="divHelper">
+			<br>
+			<div id="divUser">
+				<span id="currentUser"></span>
+			</div>
+			<h1>Your status is currently:</h1>
+			<span id="currentStatus"></span>
+			<br>
+			<h1>Change your status:</h1>
+			<select id="selectStatus">
+				<option value="READY">Ready</option>
+				<option value="NOTREADY">Not Ready</option>
+			</select>
+			<br>
+			<br>
+			<span id="currentTime"></span>
+			<br>
+		</div>
+	</body>
+</html>
