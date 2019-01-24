@@ -11,7 +11,7 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 	}
 	if(request.action == "selectStatus"){
 		if(request.selectedstatus.toString().includes("NOTREADY")){
-			var $notReady = $('a:contains(Queue)');
+			var $notReady = $('a:contains(Not Ready)');
 			$notReady[0].click();
 		}else{
 			var $ready = $('a:contains(Ready)');
