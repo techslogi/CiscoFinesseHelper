@@ -26,22 +26,20 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 				lastTime = result.lastTime;
 			}
 			if(lastTime != currentTime){
-				readyTime = 0;
-				chrome.storage.local.set({readyTime: readyTime}, function() {
+				chrome.storage.local.set({readyTime: 0}, function() {
 					
 				});
 			}
-			console.log("lastTime: " + lastTime + " currentTime: " + currentTime);
-		});
-		chrome.storage.local.get(['readyTime'], function(result) {
-			if(result.readyTime == undefined){
-				readyTime = 0;
-			}else{
-				readyTime = parseInt(result.readyTime, 10);
-			}
-			readyTime += 1;
-			chrome.storage.local.set({readyTime: readyTime}, function() {
+			chrome.storage.local.get(['readyTime'], function(result) {
+				if(result.readyTime == undefined){
+					readyTime = 0;
+				}else{
+					readyTime = parseInt(result.readyTime, 10);
+				}
+				readyTime += 1;
+				chrome.storage.local.set({readyTime: readyTime}, function() {
 
+				});
 			});
 		});
 		chrome.storage.local.set({lastTime: currentTime}, function() {
