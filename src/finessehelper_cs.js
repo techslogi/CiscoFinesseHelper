@@ -42,7 +42,7 @@ sendUpdatedStatus();
 $(document).ready(function() {
 	setInterval(function() {
 		var currentStatus = document.getElementById("state-text").outerText;
-		if (currentStatus && (currentStatus == "Ready" || currentStatus.includes("Talking"))){
+		if (currentStatus && (currentStatus == "Ready" || currentStatus.includes("Talking") || currentStatus.includes("Reserved"))){
 			chrome.runtime.sendMessage({ action: "readyCounter" });
 			sendUpdatedStatus();
 		}

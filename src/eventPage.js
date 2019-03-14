@@ -1,14 +1,37 @@
+var idCiscoBlink = "lbkcaifflogkokgpdlfajafkfbackdag";
+
+
+//Some functions were modified to add support to Cisco Blink extension.
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if(request.action == "currentStatus"){
 		if(request.currentstatus.toString().includes("Not Ready")){
+			chrome.runtime.sendMessage(idCiscoBlink, {getTargetData: true},
+			function(response) {
+				chrome.runtime.sendMessage(idCiscoBlink, {action: "currentStatus", currentstatus: "Not Ready"});
+			});
 			chrome.browserAction.setBadgeText({ text: " " });
 			chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
 		}else if(request.currentstatus.toString().includes("Talking")){
 			chrome.browserAction.setBadgeText({ text: " " });
 			chrome.browserAction.setBadgeBackgroundColor({ color: [244, 179, 66, 255] });
+			chrome.runtime.sendMessage(idCiscoBlink, {getTargetData: true},
+			function(response) {
+				chrome.runtime.sendMessage(idCiscoBlink, {action: "currentStatus", currentstatus: "Talking"});
+			});
+		}else if(request.currentstatus.toString().includes("Reserved")){
+			chrome.browserAction.setBadgeText({ text: " " });
+			chrome.browserAction.setBadgeBackgroundColor({ color: [244, 179, 66, 255] });
+			chrome.runtime.sendMessage(idCiscoBlink, {getTargetData: true},
+			function(response) {
+				chrome.runtime.sendMessage(idCiscoBlink, {action: "currentStatus", currentstatus: "Reserved"});
+			});
 		}else{
 			chrome.browserAction.setBadgeText({ text: " " });
 			chrome.browserAction.setBadgeBackgroundColor({ color: [0, 200, 0, 255] });
+			chrome.runtime.sendMessage(idCiscoBlink, {getTargetData: true},
+			function(response) {
+				chrome.runtime.sendMessage(idCiscoBlink, {action: "currentStatus", currentstatus: "Ready"});
+			});
 		}
 	}else if(request.action == "launchFinesse"){
 		var newURL = "https://usgsovoice009.srv.volvo.com/";
@@ -65,6 +88,11 @@ chrome.tabs.onRemoved.addListener(function(tabId, removeInfo) {
 		if(finesseExists == false){
 			chrome.browserAction.setBadgeText({ text: " " });
 			chrome.browserAction.setBadgeBackgroundColor({ color: [123, 123, 123, 255] });
+			//Cisco blink. If the tab is closed set as unavailable.
+			chrome.runtime.sendMessage(idCiscoBlink, {getTargetData: true},
+			function(response) {
+				chrome.runtime.sendMessage(idCiscoBlink, {action: "currentStatus", currentstatus: "Not Ready"});
+			});
 		}
 	});
 });
