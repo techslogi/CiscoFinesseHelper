@@ -18,6 +18,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 			$ready[0].click();
 		}
 	}
+	if(request.action == "keepActive" && document.getElementById("state-text").outerText){
+		var currentStatus = document.getElementById("state-text").outerText;
+		if (currentStatus && (currentStatus == "Ready" || currentStatus.includes("Talking"))){
+			chrome.runtime.sendMessage({ action: "readyCounter" });
+			sendUpdatedStatus();
+		}
+	}
 });
 
 function sendUpdatedStatus() {

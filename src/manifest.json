@@ -18,7 +18,7 @@
 			"eventPage.js", 
 			"moment.js"
 		],
-		"persistent": false
+		"persistent": true
 	},
 	
 	"content_scripts": [

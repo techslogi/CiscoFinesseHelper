@@ -82,3 +82,8 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo) {
 		}
 	});
 });
+
+//Heartbeat to keep Cisco Finesse page active.
+setInterval(function() {
+	chrome.runtime.sendMessage({ action: "keepActive" });
+}, 1 * 1000);
