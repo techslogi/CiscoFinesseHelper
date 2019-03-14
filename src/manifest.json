@@ -35,9 +35,13 @@
 	"permissions": [
 		"tabs",
 		"storage",
+		"notifications",
 		"https://usgsovoice009.srv.volvo.com/desktop/container/*"
 	],
 	
-	"web_accessible_resources": ["bg.jpg"]
+	"web_accessible_resources": [
+		"bg.jpg",
+		"icon48.png"
+	]
 	
 }

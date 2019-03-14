@@ -6,6 +6,19 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 		}else if(request.currentstatus.toString().includes("Talking")){
 			chrome.browserAction.setBadgeText({ text: " " });
 			chrome.browserAction.setBadgeBackgroundColor({ color: [244, 179, 66, 255] });
+			//If user is talking, create a notification to create a new incident.
+			chrome.storage.local.get(['beNotified'], function(result) {
+				var url = "https://itsmgbpeu.service-now.com/incident.do?sys_id=-1&sysparm_query=active=true&sysparm_stack=incident_list.do?sysparm_query=active=true";
+				var options = {
+					type: "basic",
+					title: "New SNOW incident?",
+					message: "Clicking here will open a new tab with a new incident screen.",
+					iconUrl: 'icon48.png'
+				}
+				if(result.beNotified == "1"){
+					chrome.notifications.create(url, options, function(notificationId){ }); 
+				}
+			});
 		}else{
 			chrome.browserAction.setBadgeText({ text: " " });
 			chrome.browserAction.setBadgeBackgroundColor({ color: [0, 200, 0, 255] });
@@ -83,7 +96,6 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo) {
 	});
 });
 
-//Heartbeat to keep Cisco Finesse page active.
-setInterval(function() {
-	chrome.runtime.sendMessage({ action: "keepActive" });
-}, 1 * 1000);
+chrome.notifications.onClicked.addListener(function(notificationId) {
+	chrome.tabs.create({url: notificationId});
+});  
