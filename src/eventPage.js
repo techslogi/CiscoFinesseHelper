@@ -98,4 +98,5 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo) {
 
 chrome.notifications.onClicked.addListener(function(notificationId) {
 	chrome.tabs.create({url: notificationId});
+	chrome.notifications.clear(notificationId);
 });  
