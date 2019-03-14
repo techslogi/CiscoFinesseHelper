@@ -70,4 +70,27 @@ $(document).ready(function() {
 			currentTime.innerHTML = "Ready time total: <br>" + timeFormatted;
 		}
 	});
+	
+	//Specific for this branch. This sets up if the user wants notifications from this extension or not.
+	chrome.storage.local.get(['beNotified'], function(result) {
+		var beNotifiedDOM = document.getElementById("beNotified");
+		var beNotified = result.beNotified;
+		if(beNotifiedDOM && beNotified){
+			if(beNotified == "1")
+				beNotifiedDOM.checked = true;
+			if(beNotified == "0")
+				beNotifiedDOM.checked = false;
+		}
+		beNotifiedDOM.addEventListener('change', function() {
+			if(beNotifiedDOM.checked){
+				chrome.storage.local.set({beNotified: 1}, function() {
+					
+				});
+			}else if(!beNotifiedDOM.checked){
+				chrome.storage.local.set({beNotified: 0}, function() {
+					
+				});
+			}
+		});
+	});
 });
