@@ -8,7 +8,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 			chrome.browserAction.setBadgeBackgroundColor({ color: [244, 179, 66, 255] });
 			//If user is talking, create a notification to create a new incident.
 			chrome.storage.local.get(['beNotified'], function(result) {
-				var url = "https://itsmgbpeu.service-now.com/incident.do?sys_id=-1&sysparm_query=active=true&sysparm_stack=incident_list.do?sysparm_query=active=true";
+				var url = "https://itsmgbpeu.service-now.com/nav_to.do?uri=%2Fincident.do?sys_id=-1&sysparm_query=active=true&sysparm_stack=incident_list.do?sysparm_query=active=true";
 				var options = {
 					type: "basic",
 					title: "New SNOW incident?",
