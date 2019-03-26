@@ -96,6 +96,19 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo) {
 	});
 });
 
+//Listens to the toggle-status command, defaulted to Ctrl+Q. Read manifest.
+chrome.commands.onCommand.addListener(function(command) {
+	if(command == "toggle-status"){
+		chrome.storage.local.get(['toggleActive'], function(result) {
+			if(result.toggleActive == "1"){
+				chrome.tabs.query({ title: "*Cisco Finesse*" }, function (tabs) {
+					chrome.tabs.sendMessage(tabs[0].id, { action: "toggleStatus" });
+				});
+			}
+		});
+	}
+});
+
 chrome.notifications.onClicked.addListener(function(notificationId) {
 	chrome.tabs.create({url: notificationId});
 	chrome.notifications.clear(notificationId);

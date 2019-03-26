@@ -18,6 +18,16 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 			$ready[0].click();
 		}
 	}
+	if(request.action == "toggleStatus"){
+		var currentStatus = document.getElementById("state-text").outerText;
+		if(currentStatus == "Ready"){
+			var $notReady = $('a:contains(Not Ready)');
+			$notReady[0].click();
+		}else{
+			var $ready = $('a:contains(Ready)');
+			$ready[0].click();
+		}
+	}
 });
 
 function sendUpdatedStatus() {

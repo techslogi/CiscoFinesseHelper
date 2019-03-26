@@ -71,7 +71,7 @@ $(document).ready(function() {
 		}
 	});
 	
-	//Specific for this branch. This sets up if the user wants notifications from this extension or not.
+	//This sets up if the user wants notifications from this extension or not.
 	chrome.storage.local.get(['beNotified'], function(result) {
 		var beNotifiedDOM = document.getElementById("beNotified");
 		var beNotified = result.beNotified;
@@ -93,4 +93,28 @@ $(document).ready(function() {
 			}
 		});
 	});
+	
+	//This is used for the Ctrl+Q shortcut to toggle status.
+	chrome.storage.local.get(['toggleActive'], function(result) {
+		var toggleStatusDOM = document.getElementById("toggleActive");
+		var toggleStatus = result.toggleActive;
+		if(toggleStatusDOM && toggleStatus){
+			if(toggleStatus == "1")
+				toggleStatusDOM.checked = true;
+			if(toggleStatus == "0")
+				toggleStatusDOM.checked = false;
+		}
+		toggleStatusDOM.addEventListener('change', function() {
+			if(toggleStatusDOM.checked){
+				chrome.storage.local.set({toggleActive: 1}, function() {
+					
+				});
+			}else if(!toggleStatusDOM.checked){
+				chrome.storage.local.set({toggleActive: 0}, function() {
+					
+				});
+			}
+		});
+	});
+	
 });

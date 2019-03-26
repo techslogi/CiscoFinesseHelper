@@ -57,6 +57,11 @@ a {
 	margin-left: 28px;
 }
 
+#togStatus {
+	position: aboslute;
+	margin-left: 28px;
+}
+
 /* Customize the label (the container) */
 .container {
   display: block;

@@ -2,7 +2,16 @@
 	"manifest_version": 2,
 	"name": "Cisco Finesse Helper",
 	"description": "Extension designed for aiding the use of Finesse.",
-	"version": "1.01",
+	"version": "1.03",
+	"commands": {
+		"toggle-status": {
+			"suggested_key": {
+				"default": "Ctrl+Q",
+				"mac": "Command+Q"
+			},
+			"description": "Toggle status on Cisco Finesse"
+		}
+	},
 	"icons": { "48": "icon48.png"
 	},
 	
