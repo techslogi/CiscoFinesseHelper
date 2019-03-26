@@ -43,6 +43,10 @@ function sendUpdatedStatus() {
 $(function () {
   $("#state-btn").on('DOMSubtreeModified', "span", function () {
     sendUpdatedStatus();
+	var currentStatus = document.getElementById("state-text").outerText;
+	if(currentStatus && currentStatus == "Talking"){
+		chrome.runtime.sendMessage({ action: "notify" });
+	}
   });
 });
 
