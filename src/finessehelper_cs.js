@@ -55,10 +55,12 @@ sendUpdatedStatus();
 //Heartbeat to increase the time logged.
 $(document).ready(function() {
 	setInterval(function() {
-		var currentStatus = document.getElementById("state-text").outerText;
-		if (currentStatus && (currentStatus == "Ready" || currentStatus.includes("Talking"))){
-			chrome.runtime.sendMessage({ action: "readyCounter" });
-			sendUpdatedStatus();
+		if(document.getElementById("state-text")){
+			var currentStatus = document.getElementById("state-text").outerText;
+			if (currentStatus && (currentStatus == "Ready" || currentStatus.includes("Talking"))){
+				chrome.runtime.sendMessage({ action: "readyCounter" });
+				sendUpdatedStatus();
+			}
 		}
 	}, 1 * 1000);
 });

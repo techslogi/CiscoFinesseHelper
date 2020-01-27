@@ -7,6 +7,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 			chrome.browserAction.setBadgeText({ text: " " });
 			chrome.browserAction.setBadgeBackgroundColor({ color: [244, 179, 66, 255] });
 		}else{
+			chrome.notifications.getAll((items) => {
+			  if ( items ) {
+				  for (let key in items) {
+					  chrome.notifications.clear(key);
+				  }
+			  }
+			});
 			chrome.browserAction.setBadgeText({ text: " " });
 			chrome.browserAction.setBadgeBackgroundColor({ color: [0, 200, 0, 255] });
 		}
@@ -53,6 +60,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 				type: "basic",
 				title: "New SNOW incident?",
 				message: "Clicking here will open a new tab with a new incident screen.",
+				requireInteraction: true,
 				iconUrl: 'icon48.png'
 			}
 			if(result.beNotified == "1"){

@@ -81,17 +81,19 @@ $(document).ready(function() {
 			if(beNotified == "0")
 				beNotifiedDOM.checked = false;
 		}
-		beNotifiedDOM.addEventListener('change', function() {
-			if(beNotifiedDOM.checked){
-				chrome.storage.local.set({beNotified: 1}, function() {
-					
-				});
-			}else if(!beNotifiedDOM.checked){
-				chrome.storage.local.set({beNotified: 0}, function() {
-					
-				});
-			}
-		});
+		if(beNotifiedDOM){
+			beNotifiedDOM.addEventListener('change', function() {
+				if(beNotifiedDOM.checked){
+					chrome.storage.local.set({beNotified: 1}, function() {
+						
+					});
+				}else if(!beNotifiedDOM.checked){
+					chrome.storage.local.set({beNotified: 0}, function() {
+						
+					});
+				}
+			});
+		}
 	});
 	
 	//This is used for the Ctrl+Q shortcut to toggle status.
@@ -104,17 +106,19 @@ $(document).ready(function() {
 			if(toggleStatus == "0")
 				toggleStatusDOM.checked = false;
 		}
-		toggleStatusDOM.addEventListener('change', function() {
-			if(toggleStatusDOM.checked){
-				chrome.storage.local.set({toggleActive: 1}, function() {
-					
-				});
-			}else if(!toggleStatusDOM.checked){
-				chrome.storage.local.set({toggleActive: 0}, function() {
-					
-				});
-			}
-		});
+		if(toggleStatusDOM){
+			toggleStatusDOM.addEventListener('change', function() {
+				if(toggleStatusDOM.checked){
+					chrome.storage.local.set({toggleActive: 1}, function() {
+						
+					});
+				}else if(!toggleStatusDOM.checked){
+					chrome.storage.local.set({toggleActive: 0}, function() {
+						
+					});
+				}
+			});
+		}
 	});
 	
 });

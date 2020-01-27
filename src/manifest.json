@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Cisco Finesse Helper",
 	"description": "Extension designed for aiding the use of Finesse.",
-	"version": "1.03",
+	"version": "1.04",
 	"commands": {
 		"toggle-status": {
 			"suggested_key": {
