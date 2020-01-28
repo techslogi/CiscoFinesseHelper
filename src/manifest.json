@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "Cisco Finesse Helper",
 	"description": "Extension designed for aiding the use of Finesse.",
-	"version": "1.04",
+	"version": "1.05",
 	"commands": {
 		"toggle-status": {
 			"suggested_key": {
@@ -38,6 +38,14 @@
 				"finessehelper_cs.js", 
 				"moment.js"
 			]
+		},
+		{
+			"matches": ["https://uswsnvoice006.srv.volvo.com/desktop/container/*"],
+			"js": [
+				"jquery-3.3.1.js", 
+				"finessehelper_cs.js", 
+				"moment.js"
+			]
 		}
 	],
 	
@@ -45,7 +53,8 @@
 		"tabs",
 		"storage",
 		"notifications",
-		"https://usgsovoice009.srv.volvo.com/desktop/container/*"
+		"https://usgsovoice009.srv.volvo.com/desktop/container/*",
+		"https://uswsnvoice006.srv.volvo.com/desktop/container/*"
 	],
 	
 	"web_accessible_resources": [
